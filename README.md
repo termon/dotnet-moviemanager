@@ -1,4 +1,4 @@
-# DotNet Core 5 Clean Movie Solution
+# DotNet Movie Manager Solution
 
 This .NET project demonstrates concept of separation of concerns (SOC) and is a simple implementation of the Clean Architecture demonstrated via a movie management system.
 
@@ -27,3 +27,4 @@ Provides functionality to
 
 1. User management (Login/Register/Forgotpassword/Update profile etc).
 2. Movie management (CRUD operations)
+
