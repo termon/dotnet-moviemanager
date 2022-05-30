@@ -11,8 +11,7 @@ namespace MovieManager.Web.Validators
         
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            //MovieViewModel movie = (MovieViewModel)validationContext.ObjectInstance;
-
+       
             string _url = (string)value; // movie.PosterUrl;
             
             // if a url is provided then verify it represents a valid resource
@@ -23,6 +22,7 @@ namespace MovieManager.Web.Validators
                 var uri = new Uri(_url, UriKind.Absolute);
 
                 // using method head doesn't down load the resource, rather it just verifies its existence
+                // TBC - WebRequest deprecated - replace with another implementation
                 WebRequest webRequest = WebRequest.Create(uri);
                 webRequest.Method = "HEAD";
                 try
