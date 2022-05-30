@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@model Movie
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Movies</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Details</li>
+    </ol>
+</nav>
+
+<h1>Movie</h1>
+
+<div>
+    <h4 class="mt-4 mb-4">Details</h4>
+  
+    <div class="row">
+        <div class="col-8">
+            <dl class="row">
+                <dt class="col-sm-4">Title</dt>
+                <dd class="col-sm-8">@Model.Title</dd>
+
+                <dt class="col-sm-4">Director</dt>
+                <dd class="col-sm-8">@Model.Director</dd>
+
+                <dt class="col-sm-4">Year</dt>
+                <dd class="col-sm-8">@Model.Year</dd>
+
+                <dt class="col-sm-4">Budget ($m)</dt>
+                <dd class="col-sm-8">@Model.Budget</dd>
+
+                <dt class="col-sm-4">Genre</dt>
+                <dd class="col-sm-8">@Model.Genre</dd>
+
+                <dt class="col-sm-4">Cast</dt>
+                <dd class="col-sm-8">@Model.Cast</dd>
+
+                <dt class="col-sm-4">Rating</dt>
+                <!-- Custom Rating View Component -->
+                <dd class="col-sm-8"><partial name="_Rating" model="Model" /></dd>
+
+                <dt class="col-sm-4">Plot</dt>
+                <dd class="col-sm-8">@Model.Plot</dd>
+            </dl>
+        </div>
+     
+        <div class="col-4">
+            <img class="img-fluid img-thumbnail" src="@Model.PosterUrl" />
+            <div class="d-flex justify-content-center justify-content-around mt-4">
+                <a asp-roles="Admin" asp-action="Edit" asp-route-id="@Model.Id">Edit <i class="bi bi-pencil-square mr-4"></i></a>
+                <a asp-action="Index">List <i class="bi bi-list"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <h4>Reviews</h4>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <td>Created</td>
+                <td>Name</td>
+                <td style="width:50%">Comment</td>
+                <td style="width:10%">Rating</td>
+                <td></td>
+            </tr>
+            </thead>
+            
+            <tbody>
+            @foreach (var s in Model.Reviews)
+            {
+                <tr>
+                    <td>@s.On.ToShortDateString()</td> 
+                    <td>@s.Name</td>
+                    <td>@s.Comment</td>
+                    <td>@s.Rating</td>
+                    <td><a asp-roles="Admin,Reviewer" asp-action="DeleteReview" asp-route-Id="@s.Id"><i class="bi bi-trash"></i></a></td>
+                </tr>
+            }
+            </tbody>
+            
+        </table>
+    </div>
+   
+    <div class="mt-3">
+        <a asp-roles="Admin,Reviewer" asp-action="AddReview" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">
+            <i class="bi bi-trash mr-1"></i>Add Review
+        </a>
+    </div>
+
+</div>
+

@@ -1,0 +1,46 @@
+@model IList<Movie>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">    
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Movies</li>
+    </ol>
+</nav>
+
+<h1>Movies</h1>
+
+<div class="mt-4 mb-4">
+    <a asp-roles="Admin" class="btn btn-info btn-sm" asp-action="Create">Create New</a>
+</div>
+
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th><a asp-action="Index" asp-route-order="id">#</a></th>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+ 
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@item.Director</td>
+            <td>@item.Year</td>
+            <td>@item.Genre</td>
+            <td>
+                <!-- display font awesome icons - requires fontawesome css to be loaded in _layout bi bi-info-square -->
+                <a asp-action="Details" asp-route-id="@item.Id"> <i class="bi bi-book mr-3"></i></a>
+                <a asp-roles="Admin" asp-action="Edit" asp-route-id="@item.Id"> <i class="bi bi-pencil-square mr-3"></i></a>
+                <a asp-roles="Admin" asp-action="Delete" asp-route-id="@item.Id"> <i class="bi bi-trash-fill mr-3"></i></a>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

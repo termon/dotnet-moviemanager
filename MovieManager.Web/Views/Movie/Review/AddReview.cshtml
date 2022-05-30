@@ -1,0 +1,51 @@
+﻿@model ReviewViewModel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Movies</a></li>
+        <li class="breadcrumb-item"><a asp-action="Details" asp-route-id="@Model.MovieId">Details</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Review</li>
+    </ol>
+</nav>
+
+<h1>Movie</h1>
+
+<div class="card shadow px-4 mt-4">
+    <h4 class="mt-4 mb-3">Add Review</h4>
+
+    <form asp-action="AddReview" asp-route-id="@Model.Id">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        @* <input type="hidden" asp-for="Id" /> *@
+        <input type="hidden" asp-for="MovieId" />
+        <input type="hidden" asp-for="On" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Comment" class="form-label"></label>
+            <textarea cols="4" asp-for="Comment" class="form-control"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-4">
+            <label asp-for="Rating" class="form-label"></label>
+            <input asp-for="Rating" class="form-control" />        
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a class="btn btn-default" asp-action="Details" asp-controller="Movie" asp-route-id="@Model.MovieId">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}   
+}

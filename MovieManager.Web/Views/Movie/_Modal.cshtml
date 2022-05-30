@@ -1,0 +1,27 @@
+﻿@model Object
+
+@* Place this button and partial tag in host View 
+
+<button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#xxxxModal">
+    <i class="bi bi-trash mr-1"></i>Open Modal
+</button>
+<partial name="_Modal" />
+
+*@
+
+<div class="modal fade" tabindex="-1" id="xxxxModal">
+  <div class="modal-dialog p-4">
+    <div class="modal-content">
+
+        <div class="modal-header ">
+            <h5 class="modal-title">Modal Title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+        </div>        
+
+    </div>
+  </div>
+</div>

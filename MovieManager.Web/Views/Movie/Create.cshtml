@@ -1,0 +1,84 @@
+﻿@model MovieViewModel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Movies</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Create</li>
+    </ol>
+ </nav>
+
+<h1>Movie</h1>
+
+<h4 class="mt-4 mb-4">Create</h4>
+
+<form asp-action="Create" class="card shadow p-4 mt-4">  
+  
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-2">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control"/>
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Director" class="form-label"></label>
+        <input asp-for="Director" class="form-control"/>
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <label asp-for="Year" class="form-label"></label>
+            <input asp-for="Year" class="form-control"/>
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div class="col-3">
+            <label asp-for="Budget" class="form-label"></label>
+            <input asp-for="Budget" class="form-control"/>
+            <span asp-validation-for="Budget" class="text-danger"></span>
+        </div>
+        <div class="col-3">
+            <label asp-for="Duration" class="form-label"></label>
+            <input asp-for="Duration" class="form-control"/>
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+        <div class="col-3">
+            <label asp-for="Genre" class="form-label"></label>
+            <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" class="form-control">
+                <option>Select Genre</option>
+            </select>
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cast" class="form-label"></label>
+        <input asp-for="Cast" class="form-control"/>
+        <span asp-validation-for="Cast" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PosterUrl" class="form-label"></label>
+        <input asp-for="PosterUrl" class="form-control"/>
+        <span asp-validation-for="PosterUrl" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Plot" class="form-label"></label>
+        <textarea rows="6" asp-for="Plot" class="form-control"></textarea>
+        <span asp-validation-for="Plot" class="text-danger"></span>
+    </div>
+
+    <div class="">
+        <input type="submit" value="Create" class="btn btn-primary"/>
+        <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+    </div>
+
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

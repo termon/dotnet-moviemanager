@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>MovieManager.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieManager.Data\MovieManager.Data.csproj" />
+    <ProjectReference Include="..\MovieManager.Core\MovieManager.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Review\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Review\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Review\Index.cshtml" />
+  </ItemGroup>
+
+</Project>
