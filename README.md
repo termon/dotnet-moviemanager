@@ -28,3 +28,11 @@ Provides functionality to
 1. User management (Login/Register/Forgotpassword/Update profile etc).
 2. Movie management (CRUD operations)
 
+## Implementations
+
+The application has been implemented in
+
+- [NextJS](https://github.com/termon/nextjs-moviemanager)
+- [SpringBoot](https://github.com/termon/spring-boot-moviemanager)
+- [Laravel](https://github.com/termon/laravel-moviemanager)
+- [.NET](https://github.com/termon/dotnet-moviemanager)
